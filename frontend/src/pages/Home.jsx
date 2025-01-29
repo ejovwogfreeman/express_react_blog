@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -8,10 +9,10 @@ const Home = () => {
           <h5>BLOGS</h5>
           <p>5 blogs available</p>
         </span>
-        <a href="">
+        <Link to="/create_blog">
           <i class="bi bi-plus"></i>
           <span>Create Blog</span>
-        </a>
+        </Link>
       </div>
       <div class="room-name my-3">ALL BLOGS</div>
       <div class="rooms-container">

@@ -1,33 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import img from "../assets/default.jpg";
+// import "./Navbar.css"; // Ensure to create this CSS file for styling
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleAccountStats = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav class="navbar-contents">
-      <h3 class="logo">
-        <i class="bi bi-nut"></i>
-        <span>PetroTalk</span>
-      </h3>
-      <div class="form">
+    <nav className="navbar-contents">
+      <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+        <h3 className="logo">
+          <i className="bi bi-nut"></i>
+          <span>NewsBlog</span>
+        </h3>
+      </Link>
+      <div className="form">
         <form action="">
-          <i class="bi bi-search"></i>
-          <input type="text" placeholder="Type here to search" name="" id="" />
+          <i className="bi bi-search"></i>
+          <input type="text" placeholder="Type here to search" />
         </form>
       </div>
-      <div class="account">
+      <div className="account" onClick={toggleAccountStats}>
         <span>
-          <img src="default.jpg" alt="" class="profile-img" />
-          <span>Account</span>
-          <i class="bi bi-caret-down" id="icon"></i>
+          <img src={img} alt="Profile" className="profile-img" />
+          <div className="account-text">
+            <span>Account</span>
+            <i className="bi bi-caret-down" id="icon"></i>
+          </div>
         </span>
-        <ul class="account-stats" id="account-stats">
+        <ul
+          className={`account-stats ${isOpen ? "open" : ""}`}
+          id="account-stats"
+        >
           <li>
-            <a href="" class="first">
-              <i class="bi bi-box-arrow-in-right"></i>Login
+            <a href="" className="first">
+              <i className="bi bi-box-arrow-in-right"></i>Login
             </a>
           </li>
           <li>
-            <a href="" class="last">
-              <i class="bi bi-person-plus"></i>Register
+            <a href="" className="last">
+              <i className="bi bi-person-plus"></i>Register
             </a>
           </li>
         </ul>
